@@ -17,3 +17,10 @@ export const addContact = (contact) => async (dispatch) => {
     dispatch({ type: ACTIONS.POST_CONTACT, payload: contactAddedObject });
   } catch (error) {}
 };
+
+export const getContact = (id) => async (dispatch) => {
+  try {
+    const contactDetail = await axios.get(`${URL}/${id}`);
+    dispatch({ type: ACTIONS.GET_CONTACT, payload: contactDetail.data.data });
+  } catch (error) {}
+};

@@ -3,6 +3,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
 import AddContact from "../../components/AddContact";
+import { Link } from "react-router-dom";
 
 class ContactList extends Component {
   state = {
@@ -28,7 +29,6 @@ class ContactList extends Component {
 
   componentDidMount() {
     this.props.getContacts();
-    console.log(this.props);
   }
 
   onNameChange = (event) => {
@@ -58,7 +58,9 @@ class ContactList extends Component {
 
 const createContactList = (contacts) => {
   const contactsItems = contacts.map((contact) => (
-    <li>{contact.first_name}</li>
+    <li>
+      <Link to={`/details/${contact.id}`}> {contact.first_name}</Link>
+    </li>
   ));
 
   return <ul>{contactsItems}</ul>;

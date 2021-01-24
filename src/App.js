@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import ContactList from "./pages/ContactList";
@@ -9,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Switch>
-          <Route path="/details" component={ContactDetail} />
+          <Route path="/details/:id" component={ContactDetail} />
           <Route path="/" exact component={ContactList} />
         </Switch>
       </header>
