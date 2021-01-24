@@ -1,16 +1,7 @@
 import * as actionTypes from "../actions/actionsType";
 
 const initialState = {
-  contacts: [
-    {
-      id: 1,
-      name: "Contact1",
-    },
-    {
-      id: 2,
-      name: "Contact2",
-    },
-  ],
+  contacts: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,7 +10,10 @@ const reducer = (state = initialState, action) => {
       return { ...state, contacts: action.payload };
 
     case actionTypes.GET_CONTACT:
-      return {};
+      return {
+        ...state,
+        contacts: state.contacts.add(action.payload),
+      };
 
     case actionTypes.PUT_CONTACT:
       return {};

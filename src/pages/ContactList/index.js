@@ -2,14 +2,57 @@ import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
+import AddContact from "../../components/AddContact";
 
 class ContactList extends Component {
+  state = {
+    showModal: false,
+    contactFirstName: "",
+    contactWork: "",
+  };
+
+  showModalAddContact = () => {
+    this.setState({ showModal: true });
+  };
+
+  onSaveContact = (event) => {
+    const { contactFirstName, contactWork } = this.state;
+    this.props.addContact({
+      name: contactFirstName,
+      work: contactWork,
+    });
+    console.log("Save Event", event);
+    console.log("State before save:", this.state);
+    this.setState({ showModal: false });
+  };
+
   componentDidMount() {
     this.props.getContacts();
+    console.log(this.props);
   }
 
+  onNameChange = (event) => {
+    this.setState({ contactFirstName: event.target.value });
+  };
+
+  onWorkChange = (event) => {
+    this.setState({ contactWork: event.target.value });
+  };
+
   render() {
-    return <div>{createContactList(this.props.contacts)}</div>;
+    return (
+      <div>
+        {this.state.showModal && (
+          <AddContact
+            onNameChange={this.onNameChange}
+            onWorkChange={this.onWorkChange}
+            onSaveContact={this.onSaveContact}
+          />
+        )}
+        <button onClick={this.showModalAddContact}>Agregar</button>
+        {createContactList(this.props.contacts)}
+      </div>
+    );
   }
 }
 
