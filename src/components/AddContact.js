@@ -1,4 +1,6 @@
 import React from "react";
+import './styles.scss'
+import '../sass/buttons.scss'
 
 const AddContact = (props) => {
   return (
@@ -21,7 +23,7 @@ const AddContact = (props) => {
           onChange={props.onWorkChange}
         />
       </form>
-      <button onClick={props.onSaveContact}>Save</button>
+      <button className='mainButton' onClick={props.onSaveContact}>Save</button>
     </React.Fragment>
   );
 };

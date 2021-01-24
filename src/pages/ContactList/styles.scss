@@ -1,0 +1,16 @@
+.linkItem{
+    text-decoration: none;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+}
+
+.toolBarContainer {
+    display: flex;
+}
+
+.addContactContainer {
+    // display: flex;
+}
+

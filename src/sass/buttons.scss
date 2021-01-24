@@ -1,0 +1,12 @@
+@import "./variables.scss";
+
+.mainButton {
+    margin: 10px;
+    padding: 8px;
+    background-color: $gray-primary;
+    color: $main-color;
+    font: bold;
+    font-size: medium;
+    border-radius: 8px;
+    font-family: $font-family-sans-serif;
+}

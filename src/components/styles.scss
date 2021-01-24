@@ -1,0 +1,12 @@
+@import "../sass/variables.scss";
+
+label {
+    font-family: $font-family-sans-serif;
+    color: $gray-primary;
+    margin: 5px 7px 10px 10px;
+}
+
+input {
+    height: 25px;
+    width: 160px;
+}

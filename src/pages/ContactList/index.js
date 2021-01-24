@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/actions";
 import AddContact from "../../components/AddContact";
 import { Link } from "react-router-dom";
+import "./styles.scss";
+import "../../sass/buttons.scss";
 
 class ContactList extends Component {
   state = {
@@ -42,14 +44,20 @@ class ContactList extends Component {
   render() {
     return (
       <div>
+        <div className="toolBarContainer">
+          <button className="mainButton" onClick={this.showModalAddContact}>
+            Agregar
+          </button>
+        </div>
         {this.state.showModal && (
-          <AddContact
-            onNameChange={this.onNameChange}
-            onWorkChange={this.onWorkChange}
-            onSaveContact={this.onSaveContact}
-          />
+          <div className="addContactContainer">
+            <AddContact
+              onNameChange={this.onNameChange}
+              onWorkChange={this.onWorkChange}
+              onSaveContact={this.onSaveContact}
+            />
+          </div>
         )}
-        <button onClick={this.showModalAddContact}>Agregar</button>
         {createContactList(this.props.contacts)}
       </div>
     );
@@ -58,12 +66,15 @@ class ContactList extends Component {
 
 const createContactList = (contacts) => {
   const contactsItems = contacts.map((contact) => (
-    <li>
-      <Link to={`/details/${contact.id}`}> {contact.first_name}</Link>
+    <li className="linkItem">
+      <Link className="linkItem" to={`/details/${contact.id}`}>
+        {" "}
+        {contact.first_name}
+      </Link>
     </li>
   ));
 
-  return <ul>{contactsItems}</ul>;
+  return <ol>{contactsItems}</ol>;
 };
 
 const mapStateToProps = (reducers) => {

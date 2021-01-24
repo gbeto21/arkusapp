@@ -1,6 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
+import "./styles.scss";
 import * as actions from "../../store/actions/actions";
 
 class ContactDetail extends Component {
@@ -17,14 +18,22 @@ class ContactDetail extends Component {
 
   render() {
     return (
-      <div>
-        <label>First name: </label>
-        <label>{this.props.contactDetail.first_name}</label>
-        <label>Last name: </label>
-        <label>{this.props.contactDetail.last_name}</label>
-        <label>Email: </label>
-        <label>{this.props.contactDetail.email}</label>
-        <img src={this.props.contactDetail.avatar} />
+      <div className="detailsContainer">
+        <div className="infoContainer">
+          <label>First name: </label>
+          <label>{this.props.contactDetail.first_name}</label>
+        </div>
+        <div className="infoContainer">
+          <label>Last name: </label>
+          <label>{this.props.contactDetail.last_name}</label>
+        </div>
+        <div className="infoContainer">
+          <label>Email: </label>
+          <label>{this.props.contactDetail.email}</label>
+        </div>
+        <div className="imageContainer">
+          <img src={this.props.contactDetail.avatar} />
+        </div>
       </div>
     );
   }

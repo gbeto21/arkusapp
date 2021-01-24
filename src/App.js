@@ -1,4 +1,4 @@
-import "./App.css";
+import "./sass/app.scss";
 import { Route, Switch } from "react-router-dom";
 import ContactList from "./pages/ContactList";
 import ContactDetail from "./pages/ConctactDetail";
